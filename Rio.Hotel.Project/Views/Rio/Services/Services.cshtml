@@ -1,0 +1,54 @@
+﻿@using Sitecore.Mvc
+@using Glass.Mapper.Sc.Web.Mvc
+@model Rio.Hotel.Project.Models.HotelServices
+
+@if (Model != null)
+{
+<section id="services-section" class="services">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="single-content-left">
+                    <div class="section_title2">
+                        <h2>@Html.Glass().Editable(Model, f => f.Title)</h2>
+                        <h3>@Html.Glass().Editable(Model, f => f.SubTitle)</h3>
+                    </div>
+                    <div class="col-md-6">
+                        @if (Model.Services != null)
+                        {
+                            foreach (var service in Model.Services.Take(3))
+                            {
+                            <div class="services-box">
+                                <h4>@Html.Glass().Editable(service, f => f.ServiceTitle)</h4>
+                                <p>@Html.Glass().Editable(service, f => f.ServiceSummary)<p>
+                            </div>
+                            <hr>
+                            }
+                        }                        
+                    </div>
+
+                    <div class="col-md-6">
+                        @if (Model.Services != null)
+                        {
+                            foreach (var service in Model.Services.Skip(3).Take(3))
+                            {
+                                <div class="services-box">
+                                    <h4>@Html.Glass().Editable(service, f => f.ServiceTitle)</h4>
+                                    <p>@Html.Glass().Editable(service, f => f.ServiceSummary)<p>
+                                </div>
+                                <hr>
+                            }
+                        }                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-md-offset-1 padding-0">
+                <div class="content-hotel booking template">                    
+                    @Html.Glass().RenderImage(Model, f => f.ServicesImage, new { @class = "img-responsive" })
+                </div>
+            </div>
+        </div>        
+    </div>
+</section>
+}

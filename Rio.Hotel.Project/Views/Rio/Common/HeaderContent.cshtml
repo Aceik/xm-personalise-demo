@@ -1,0 +1,20 @@
+﻿@using Sitecore.Mvc
+@using Glass.Mapper.Sc.Web.Mvc
+@model Rio.Hotel.Project.Models.HeaderContent
+
+@if (Model != null)
+{
+    <div class="intro center-vertically">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="header-content text-center">
+                        <p>@Html.Glass().Editable(Model, f => f.Title)</p>
+                        <h1 class="margin-auto">@Html.Glass().Editable(Model, f => f.SubTitle)</h1>
+                        @Html.Glass().RenderLink(Model, f => f.CalltoAction,new {@class="btn btn-rs"}, isEditable: true)                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

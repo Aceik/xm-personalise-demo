@@ -1,0 +1,54 @@
+﻿@using Sitecore.Mvc
+@using Glass.Mapper.Sc.Web.Mvc
+@model Rio.Hotel.Project.Models.BlogList
+
+@if (Model != null && Model.BlogPosts.Any())
+{
+    var firstBlogPost = Model.BlogPosts.FirstOrDefault();
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="section_title">
+                        <h2>@Html.Glass().Editable(Model, f => f.Title)</h2>
+                        <h3>@Html.Glass().Editable(Model, f => f.SubTitle)</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nospace container">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <!-- start news-->
+                <div class="grid-hotel space-right-double">
+                    <figure class="effect-sadie">
+                        @Html.Glass().RenderImage(firstBlogPost, f => f.BlogImage, isEditable: true)
+                        <figcaption>
+                            <h2>@Html.Glass().Editable(firstBlogPost, f => f.Title)</h2>
+                            <p>@Html.Glass().Editable(firstBlogPost, f => f.Summary) <br /> <a href="@firstBlogPost.Url">View more</a></p>
+
+                        </figcaption>
+                    </figure>
+                </div>
+                <!-- end news -->
+            </div>
+
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                @foreach (var blogPost in Model.BlogPosts.Skip(1))
+                {
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="grid-hotel @blogPost.ClassName">
+                            <figure class="effect-sadie">
+                                @Html.Glass().RenderImage(blogPost, f => f.BlogImage, isEditable: true)
+                                <figcaption>
+                                    <h2>@Html.Glass().Editable(blogPost, f => f.Title)</h2>
+                                    <p>@Html.Glass().Editable(blogPost, f => f.Summary) <br /> <a href="@blogPost.Url">View more</a></p>
+
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

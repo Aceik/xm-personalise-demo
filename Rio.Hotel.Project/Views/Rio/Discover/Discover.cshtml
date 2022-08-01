@@ -1,0 +1,45 @@
+﻿@using Sitecore.Mvc
+@using Glass.Mapper.Sc.Web.Mvc
+@model Rio.Hotel.Project.Models.Discover
+
+@if (Model != null)
+{
+    var image1Source = Model.Image1 != null && !string.IsNullOrWhiteSpace(Model.Image1.Src) ? Model.Image1.Src : string.Empty;
+    var image2Source = Model.Image2 != null && !string.IsNullOrWhiteSpace(Model.Image2.Src) ? Model.Image2.Src : string.Empty;
+    var image3Source = Model.Image3 != null && !string.IsNullOrWhiteSpace(Model.Image3.Src) ? Model.Image3.Src : string.Empty;
+
+    <section id="discover" class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="text-left single-content">
+                        <h3>
+                            @Html.Glass().Editable(Model, f => f.Title)
+                        </h3>
+                        @Html.Glass().Editable(Model, f => f.Summary)
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="text-left">
+                        <div class="popup-gallery">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <a class="image-popup-no-margins" href="@image1Source" title="Relax time">
+                                    @Html.Glass().RenderImage(Model, f => f.Image1, isEditable: true)                                    
+                                </a>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <a class="image-popup-no-margins" href="@image2Source" title="Free place on beach">
+                                    @Html.Glass().RenderImage(Model, f => f.Image2, isEditable: true)
+                                </a>
+                                <div class="space-bottom-large"> </div>
+                                <a class="image-popup-no-margins" href="@image3Source" title="Relax">
+                                    @Html.Glass().RenderImage(Model, f => f.Image3, isEditable: true)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    </section>
+}
