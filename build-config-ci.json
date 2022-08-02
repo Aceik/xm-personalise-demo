@@ -1,0 +1,10 @@
+{
+  "SolutionName": "SUGCON.Demo.sln",
+  "BuildConfiguration": "Release",
+  "RunCleanBuilds": false,
+  "BuildToolVersions": "VS2019",
+  "OverrideMSBuildPath": false,
+  "MSBuildPath": "",
+  "CMHost": "https://#{sitecore-cm-hostname}",
+  "IDHost": "https://#{sitecore-id-hostname}"
+}
