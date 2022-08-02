@@ -8,8 +8,6 @@ type HeaderProps = ComponentProps & {
     Address: Field<string>;
     Logo: ImageField;
     BackgroundImage: ImageField;    
-
-    // public HeaderNavigation HeaderNavigation { get; set; }
     }
 };
 
@@ -17,7 +15,7 @@ const Header = ({ rendering, fields }: HeaderProps): JSX.Element => {
   
     return (
         <>
-            <div id="header-background" style={{backgroundImage: `url('${fields?.BackgroundImage})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center top / cover' }}>
+            <div id="header-background" style={{backgroundImage: `url('${fields?.BackgroundImage?.value?.src})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center top / cover' }}>
                 <div id="topbar" className="topbar-transparent">
                     <div className="container">
                         <div className="row">
@@ -49,37 +47,12 @@ const Header = ({ rendering, fields }: HeaderProps): JSX.Element => {
                                 </a>
                             </div>
                             <Placeholder key="header-nav" name="header-nav" rendering={rendering} /> 
-                            {/* @if (Model.HeaderNavigation != null && Model.HeaderNavigation.TopNavigations != null
-                                && Model.HeaderNavigation.TopNavigations.Count > 0)
-                            {
-                                <div className="container">
-                                    <nav id="hmenu">
-                                        <div id="head-mobile"></div>
-                                        <div className="button"></div>
-                                        <ul>
-                                            @foreach (var item in Model.HeaderNavigation.TopNavigations)
-                                            {
-                                                <li className='@item.ActiveClass'><a href='@item.NavigationLink'>@item.NavigationTitle</a></li>
-
-                                                @*<li>
-                                                        <a href='#rooms'>Rooms</a>
-                                                        <ul>
-                                                            <li><a href='room-grid.html'>Room Grid</a> </li>
-                                                            <li><a href='room-list.html'>Room List</a> </li>
-                                                            <li><a href='single-room.html'>Single Room</a> </li>
-                                                        </ul>
-                                                    </li>*@
-                                            }
-                                        </ul>
-                                    </nav>
-                                </div>
-                            } */}
                         </div>
                     </div>
                 </header>
-            <Placeholder key="header-content" name="header-content" rendering={rendering} />        
-        </div>
-    </>
+                <Placeholder key="header-content" name="header-content" rendering={rendering} />        
+            </div>
+        </>
     );
 };
 
