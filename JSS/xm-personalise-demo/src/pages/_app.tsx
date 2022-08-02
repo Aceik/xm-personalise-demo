@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import { I18nProvider } from 'next-localization';
 
 import 'assets/app.css';
+// import 'assets/bootstrap-3.3.7/css/bootstrap.min.css';
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
   const { dictionary, ...rest } = pageProps;

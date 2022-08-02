@@ -7,6 +7,7 @@ import {
   LayoutServiceData,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import Navigation from 'src/Navigation';
+import Script from 'next/script'
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -22,8 +23,33 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Rio Hotel</title>
+
         <title>{route?.fields?.pageTitle?.value || 'Page'}</title>
         <link rel="icon" href={`${publicUrl}/favicon.ico`} />
+
+        {/* CSS  */}
+        <link rel="stylesheet" href={`${publicUrl}/bootstrap-3.3.7/css/bootstrap.min.css`} />
+        <link rel="stylesheet" href={`${publicUrl}/css/custom.css`} />
+        <link rel="stylesheet" href={`${publicUrl}/css/owl.carousel.css`} />
+        <link rel="stylesheet" href={`${publicUrl}/css/owl.theme.default.min.css`} />
+        <link rel="stylesheet" href={`${publicUrl}/css/owl.theme.default.css`} />
+        <link rel="stylesheet" href={`${publicUrl}/css/style.css`} />
+        <link rel="stylesheet" href={`${publicUrl}/css/font-awesome.min.css`} />
+        <link rel="stylesheet" href={`${publicUrl}/magnific-popup/magnific-popup.css`} />
+        <link rel="stylesheet" href={`${publicUrl}/vegas/vegas.min.css`} />
+
+        {/* google fonts */}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Domine:400,700" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        
+
       </Head>
 
       {/*
@@ -35,9 +61,29 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
       */}
       <VisitorIdentification />
       
+
+
       <Navigation />
-      {/* root placeholder for the app, which we add components to using route data */}
-      <div className="container">{route && <Placeholder name="jss-main" rendering={route} />}</div>
+      {/* root placeholders for the app, which we add components to using route data */}
+      <div>
+        <div>{route && <Placeholder name="jss-header" rendering={route} />}</div>
+        <div>{route && <Placeholder name="jss-main" rendering={route} />}</div>
+
+        <a href="javascript:" id="return-to-top"><i className="fa fa-arrow-up"></i></a>
+        <div>{route && <Placeholder name="jss-footer" rendering={route} />}</div>
+
+        <Script src={`${publicUrl}/js/jquery-2.1.1.js`} />
+        <Script src={`${publicUrl}/bootstrap-3.3.7/js/bootstrap.min.js`} />
+        <Script src={`${publicUrl}/js/owl.carousel.js`} />
+        <Script src={`${publicUrl}/js/owl.carousel.min.js`} />
+        <Script src={`${publicUrl}/js/style.js`} />
+        <Script src={`${publicUrl}/js/validator.min.js`} />
+        <Script src={`${publicUrl}/magnific-popup/jquery.magnific-popup.js`} />
+        <Script src={`${publicUrl}/magnific-popup/jquery.magnific-popup.min.js`} />
+        <Script src={`${publicUrl}/magnific-popup/swiper-magnific-popup.js`} />
+        <Script src={`${publicUrl}/js/custom.js`} />
+        <Script src={`${publicUrl}/vegas/vegas.min.js`} />
+      </div>
     </>
   );
 };
