@@ -39,7 +39,7 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
         <link rel="stylesheet" href={`${publicUrl}/css/style.css`} />
         <link rel="stylesheet" href={`${publicUrl}/css/font-awesome.min.css`} />
         <link rel="stylesheet" href={`${publicUrl}/magnific-popup/magnific-popup.css`} />
-        <link rel="stylesheet" href={`${publicUrl}/vegas/vegas.min.css`} />
+        {/* <link rel="stylesheet" href={`${publicUrl}/vegas/vegas.min.css`} /> */}
 
         {/* google fonts */}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,600" />
@@ -60,10 +60,7 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
         VI detection only runs once for a given analytics ID, so this is not a recurring operation once cookies are established.
       */}
       <VisitorIdentification />
-      
-
-
-      <Navigation />
+            
       {/* root placeholders for the app, which we add components to using route data */}
       <div>
         <div>{route && <Placeholder name="jss-header" rendering={route} />}</div>
@@ -81,8 +78,8 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
         <Script src={`${publicUrl}/magnific-popup/jquery.magnific-popup.js`} />
         <Script src={`${publicUrl}/magnific-popup/jquery.magnific-popup.min.js`} />
         <Script src={`${publicUrl}/magnific-popup/swiper-magnific-popup.js`} />
-        <Script src={`${publicUrl}/js/custom.js`} />
-        <Script src={`${publicUrl}/vegas/vegas.min.js`} />
+        {/* <Script src={`${publicUrl}/vegas/vegas.min.js`} /> */}
+        <Script src={`${publicUrl}/js/custom.js`} />        
       </div>
     </>
   );

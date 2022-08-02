@@ -48,6 +48,7 @@ const Header = ({ rendering, fields }: HeaderProps): JSX.Element => {
                                     <Image field={fields?.Logo} editable={true} />                                                            
                                 </a>
                             </div>
+                            <Placeholder key="header-nav" name="header-nav" rendering={rendering} /> 
                             {/* @if (Model.HeaderNavigation != null && Model.HeaderNavigation.TopNavigations != null
                                 && Model.HeaderNavigation.TopNavigations.Count > 0)
                             {
@@ -76,7 +77,7 @@ const Header = ({ rendering, fields }: HeaderProps): JSX.Element => {
                         </div>
                     </div>
                 </header>
-            <Placeholder key="qm-header" name="header-content" rendering={rendering} />        
+            <Placeholder key="header-content" name="header-content" rendering={rendering} />        
         </div>
     </>
     );

@@ -7,16 +7,16 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6E4CE82D-302C-4F0D-91BF-C5FA85E216B0}</ProjectGuid>
+    <ProjectGuid>{9C4B4621-6D97-493D-81BC-BABDFF0F1463}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SUGCON.Demo.Common</RootNamespace>
-    <AssemblyName>SUGCON.Demo.Common</AssemblyName>
+    <RootNamespace>SUGCON.Demo.SitecoreExtensions</RootNamespace>
+    <AssemblyName>SUGCON.Demo.SitecoreExtensions</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44336</IISExpressSSLPort>
+    <IISExpressSSLPort>44334</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -390,13 +390,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RazorGeneratorMvcStart.cs" />
+    <Compile Include="ContentsResolvers\NavigationContentsResolver.cs" />
+    <Compile Include="ContentsResolvers\PageListContentsResolver.cs" />
+    <Compile Include="Models\NavigationItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templates.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Project\SUGCON.Demo.Project.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="App_Config\Include\zzz\SUGCON.Demo.GraphQLEndpoint.config">
+    <Content Include="App_Config\Include\Foundation\SUGCON.Demo.SitecoreExtensions.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
@@ -406,12 +407,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Foundation\SitecoreExtensions\code\SUGCON.Demo.SitecoreExtensions\SUGCON.Demo.SitecoreExtensions.csproj">
-      <Project>{9c4b4621-6d97-493d-81bc-babdff0f1463}</Project>
-      <Name>SUGCON.Demo.SitecoreExtensions</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -426,9 +421,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>63574</DevelopmentServerPort>
+          <DevelopmentServerPort>65397</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44336/</IISUrl>
+          <IISUrl>https://localhost:44334/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
