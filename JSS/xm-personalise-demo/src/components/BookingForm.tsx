@@ -1,7 +1,5 @@
 import { ComponentWithContextProps } from 'lib/component-props';
-import React, { useEffect } from 'react';
-// import { resetEditorChromes } from '@sitecore-jss/sitecore-jss-nextjs';
-import { Text, RichText, Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type BookingFormProps = ComponentWithContextProps & {
     fields: {
@@ -9,7 +7,7 @@ type BookingFormProps = ComponentWithContextProps & {
     };    
 };
 
-const BookingForm = ({ fields }: BookingFormProps): JSX.Element => {    
+const BookingForm = ({ }: BookingFormProps): JSX.Element => {    
     return (                           
         <section id="booking-section" className="content-booking">
             <div className="container">
