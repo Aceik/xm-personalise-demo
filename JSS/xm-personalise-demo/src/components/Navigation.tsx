@@ -1,6 +1,6 @@
 import { ComponentWithContextProps } from 'lib/component-props';
 import React, { useEffect } from 'react';
-import { resetEditorChromes, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
+import { resetEditorChromes } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type NavigationProps = ComponentWithContextProps & {
     fields: {
@@ -16,8 +16,6 @@ interface NavigationItem {
 }
 
 const Navigation = ({ fields }: NavigationProps): JSX.Element => {
-    // const { sitecoreContext } = useSitecoreContext<SitecoreContext>();
-
     const NavigationItems = fields?.navs;
 
     useEffect(() => {
@@ -34,8 +32,7 @@ const Navigation = ({ fields }: NavigationProps): JSX.Element => {
                     {NavigationItems &&
                             NavigationItems?.length > 0 &&
                         NavigationItems.map((navItem: NavigationItem, index: number) => {
-                            const navKey = navItem.id || index;
-                            // const isDropdown = navItem?.children && navItem?.children?.length > 0;                
+                            const navKey = navItem.id || index;                                         
                             return (                               
                                 <li key={navKey} className=''><a href={navItem?.url}>{navItem?.navigationTitle}</a></li>                                                                               
                             );
