@@ -34,7 +34,7 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
         VI detection only runs once for a given analytics ID, so this is not a recurring operation once cookies are established.
       */}
       <VisitorIdentification />
-
+      
       <Navigation />
       {/* root placeholder for the app, which we add components to using route data */}
       <div className="container">{route && <Placeholder name="jss-main" rendering={route} />}</div>
