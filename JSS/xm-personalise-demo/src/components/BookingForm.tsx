@@ -38,12 +38,12 @@ const BookingForm = ({ }: BookingFormProps): JSX.Element => {
                         </div>
 
                         <div className="form-group col-md-3 col-sm-6 col-xs-12">
-                            <input type='date' className="form-control" id="bcheckin" value="2019-08-27" required/>
+                            <input type='date' className="form-control" id="bcheckin" defaultValue="2019-08-27" required/>
 
                         </div>
 
                         <div className="form-group col-md-3 col-sm-6 col-xs-12">
-                            <input type='date' className="form-control" id="bcheckout" value="2019-08-29" required/>
+                            <input type='date' className="form-control" id="bcheckout" defaultValue="2019-08-29" required/>
                         </div>
 
                         <div className="form-group col-md-3 col-sm-6 col-xs-12">
