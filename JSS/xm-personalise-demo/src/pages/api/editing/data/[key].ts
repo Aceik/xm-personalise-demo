@@ -11,11 +11,11 @@ import { EditingDataMiddleware } from '@sitecore-jss/sitecore-jss-nextjs/middlew
 // Bump body size limit (1mb by default) for Experience Editor payload
 // See https://nextjs.org/docs/api-routes/api-middlewares#custom-config
 export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '20mb',
+    api: {
+        bodyParser: {
+            sizeLimit: '20mb',
+        },
     },
-  },
 };
 
 // Wire up the EditingDataMiddleware handler

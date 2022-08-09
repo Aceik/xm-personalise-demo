@@ -1,5 +1,5 @@
 a[target='_blank']:after {
-  content: '\1F5D7'
+    content: '\1F5D7';
 }
 
 /*
@@ -7,15 +7,18 @@ a[target='_blank']:after {
   if you run the app in connected mode while the Sitecore cookies
   are set to edit mode.
 */
-.scChromeData, .scpm { display: none !important; }
+.scChromeData,
+.scpm {
+    display: none !important;
+}
 
 /*
   Styles for default JSS error components
 */
 .sc-jss-editing-error,
 .sc-jss-placeholder-error {
-  padding: 1em;
-  background-color: lightyellow;
+    padding: 1em;
+    background-color: lightyellow;
 }
 
 /* 
