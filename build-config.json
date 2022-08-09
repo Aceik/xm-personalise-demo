@@ -1,0 +1,15 @@
+{
+  "SolutionName": "SUGCON.Demo.sln",
+  "ProjectName": "SUGCON.Demo.Common.csproj",
+  "BuildProjectOrSolution": "Project",
+  "BuildConfiguration": "Debug",
+  "RunCleanBuilds": false,
+  "BuildToolVersions": "VS2019",
+  "OverrideMSBuildPath": true,
+  "MSBuildPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\MSBuild\\Current\\Bin\\msbuild.exe",
+  "CMHost": "https://sitecoresc.dev.local",
+  "CMHostFolder": "C:\\inetpub\\wwwroot\\xm-democm.dev.local",
+  "IDHost": "https://xm-demoidentityserver.dev.local",
+  "SitecoreAdminUser": "sitecore\\admin",
+  "SitecoreAdminPassword": "b"
+}

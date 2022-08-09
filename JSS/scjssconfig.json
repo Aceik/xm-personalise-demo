@@ -1,0 +1,9 @@
+{
+  "sitecore": {
+    "instancePath": "C:\\inetpub\\wwwroot\\xm-democm.dev.local",
+    "apiKey": "{5B365F12-89C6-4669-A95A-00394F0BE40D}",
+    "deploySecret": "qu9hujx0xoalq2alebh9dixfuyydbrol6gayjh8ekel",
+    "deployUrl": "http://xm-democm.dev.local/sitecore/api/jss/import",
+    "layoutServiceHost": "http://xm-democm.dev.local"
+  }
+}
