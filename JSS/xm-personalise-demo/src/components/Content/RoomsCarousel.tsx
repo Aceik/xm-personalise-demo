@@ -41,8 +41,7 @@ const RoomsCarousel = ({ fields }: RoomsCarouselProps): JSX.Element => {
                     <div className="room-carousel owl-carousel owl-theme">                        
                         {fields?.Rooms &&
                             fields?.Rooms.map((room: RoomItem) => (                                                   
-                                <div key={room.id} className="item-room">                                                                
-                                {console.log(room)}         
+                                <div key={room.id} className="item-room">                                                                                                       
                                     <div className="room-image">
                                         {room?.fields?.ThumbnailImage && (
                                         

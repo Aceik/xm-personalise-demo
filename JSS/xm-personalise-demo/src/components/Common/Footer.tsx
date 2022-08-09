@@ -26,7 +26,7 @@ const Footer = ({ fields }: FooterProps): JSX.Element => {
                 <div className="container clearfix footer-pad">
                     <div className="widget about-us-widget col-md-4 col-sm-6">
                         <a href="/">                        
-                            <Image field={fields?.Logo} editable={true} class="img-responsive" />                                                                                                                    
+                            <Image field={fields?.Logo} editable={true} className="img-responsive" />                                                                                                                    
                         </a>
                         <p>
                             <Text field={fields?.AboutUs} />
