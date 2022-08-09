@@ -5,7 +5,7 @@ import { resetEditorChromes } from '@sitecore-jss/sitecore-jss-nextjs';
 type NavigationProps = ComponentWithContextProps & {
     fields: {
         navs: Array<NavigationItem>;
-    };    
+    };
 };
 
 interface NavigationItem {
@@ -23,25 +23,26 @@ const Navigation = ({ fields }: NavigationProps): JSX.Element => {
     }, []);
 
     return (
-        <>                    
-        <div className="container">
-            <nav id="hmenu">
-                <div id="head-mobile"></div>
-                <div className="button"></div>
-                <ul>
-                    {NavigationItems &&
+        <>
+            <div className="container">
+                <nav id="hmenu">
+                    <div id="head-mobile"></div>
+                    <div className="button"></div>
+                    <ul>
+                        {NavigationItems &&
                             NavigationItems?.length > 0 &&
-                        NavigationItems.map((navItem: NavigationItem, index: number) => {
-                            const navKey = navItem.id || index;                                         
-                            return (                               
-                                <li key={navKey} className=''><a href={navItem?.url}>{navItem?.navigationTitle}</a></li>                                                                               
-                            );
-                        }
-                    )}
-                </ul>
-            </nav>
-        </div>                                               
-    </>
+                            NavigationItems.map((navItem: NavigationItem, index: number) => {
+                                const navKey = navItem.id || index;
+                                return (
+                                    <li key={navKey} className="">
+                                        <a href={navItem?.url}>{navItem?.navigationTitle}</a>
+                                    </li>
+                                );
+                            })}
+                    </ul>
+                </nav>
+            </div>
+        </>
     );
 };
 
