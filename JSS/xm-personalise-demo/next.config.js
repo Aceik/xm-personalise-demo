@@ -15,6 +15,8 @@ const nextConfig = {
     // Make the same PUBLIC_URL available as an environment variable on the client bundle
     env: {
         PUBLIC_URL: publicUrl,
+        SITECORE_BOXEVER_CLIENTKEY: process.env.SITECORE_BOXEVER_CLIENTKEY,
+        SITECORE_BOXEVER_COOKIE_DOMAIN: process.env.SITECORE_BOXEVER_COOKIE_DOMAIN,
     },
 
     i18n: {

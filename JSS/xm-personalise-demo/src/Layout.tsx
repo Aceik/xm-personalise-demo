@@ -1,12 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import {
-    Placeholder,
-    VisitorIdentification,
-    getPublicUrl,
-    LayoutServiceData,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Placeholder, getPublicUrl, LayoutServiceData } from '@sitecore-jss/sitecore-jss-nextjs';
 import Script from 'next/script';
+import { PushViewEvent } from 'lib/sitecore-cdp/sitecore-cdp';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -80,42 +76,43 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
                   })(window,document,'script','dataLayer','GTM-NQKPNBN');`,
                     }}
                 ></script>
-                {/* Google Tag Manager */}
+                {/* End Google Tag Manager */}
 
+                {/* Define Global Boxever/CDP Settings */}
+                {console.log('clientkey', `${process.env.SITECORE_BOXEVER_CLIENTKEY}`)}
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `
                         (function () {
-                            window._boxever_settings = {
-                            client_key: "sndbxdyjczjdeusltnggagevawvroyex",
-                            target: "https://api-ap-southeast-2-production.boxever.com/v1.2",
-                            cookie_domain: ".sugcon-headless-demo.xyz",
-                            javascriptLibraryVersion: '1.4.9',
-                            //pointOfSale: "boxever.com",
-                            //web_flow_target: "https://d35vb5cccm4xzp.cloudfront.net"
-                            }
-                            // load boxever.js
-                            var s = document.createElement('script');
-                            s.type = 'text/javascript';
-                            s.async = true;
-                            s.src = 'https://d1mj578wat5n4o.cloudfront.net/boxever-1.4.9.min.js';
-                            var x = document.getElementsByTagName('script')[0];
-                            x.parentNode.insertBefore(s, x);    
+                            var _boxeverq = _boxeverq || [];
+                            window._boxever_settings = {                            
+                                client_key: "${process.env.SITECORE_BOXEVER_CLIENTKEY}",
+                                target: "https://api-ap-southeast-2-production.boxever.com/v1.2",                            
+                                cookie_domain: "${process.env.SITECORE_BOXEVER_COOKIE_DOMAIN}",
+                                javascriptLibraryVersion: '1.4.9',
+                                pointOfSale: "Luxury Hotel",
+                                //web_flow_target: "https://d35vb5cccm4xzp.cloudfront.net"
+                            }                                              
                         })();`,
                     }}
                 ></script>
+
+                {/* load boxever.js */}
+                <script
+                    type="text/javascript"
+                    async={true}
+                    src="https://d1mj578wat5n4o.cloudfront.net/boxever-1.4.9.min.js"
+                ></script>
             </Head>
 
-            {/* <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQKPNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> */}
-
-            {/*
-        VisitorIdentification is necessary for Sitecore Analytics to determine if the visitor is a robot.
-        If Sitecore XP (with xConnect/xDB) is used, this is required or else analytics will not be collected for the JSS app.
-        For XM (CMS-only) apps, this should be removed.
-
-        VI detection only runs once for a given analytics ID, so this is not a recurring operation once cookies are established.
-      */}
-            <VisitorIdentification />
+            {PushViewEvent({
+                channel: 'WEB',
+                type: 'VIEW',
+                currency: 'AUD',
+                language: 'EN',
+                page: '/',
+                pos: 'Luxury Hotel',
+            })}
 
             {/* root placeholders for the app, which we add components to using route data */}
             <div>
