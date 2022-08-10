@@ -1,12 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import {
-    Placeholder,
-    VisitorIdentification,
-    getPublicUrl,
-    LayoutServiceData,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Placeholder, getPublicUrl, LayoutServiceData } from '@sitecore-jss/sitecore-jss-nextjs';
 import Script from 'next/script';
+import { PushViewEvent, ViewEvent } from 'lib/sitecore-cdp/sitecore-cdp';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -88,6 +84,7 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
                     dangerouslySetInnerHTML={{
                         __html: `
                         (function () {
+                            var _boxeverq = _boxeverq || [];
                             window._boxever_settings = {                            
                                 client_key: "${process.env.SITECORE_BOXEVER_CLIENTKEY}",
                                 target: "https://api-ap-southeast-2-production.boxever.com/v1.2",                            
@@ -108,18 +105,15 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
                 ></script>
             </Head>
 
-            {/* '${analyticSettings?.GoogleGTMid}' */}
-
-            {/* <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQKPNBN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> */}
-
-            {/*
-        VisitorIdentification is necessary for Sitecore Analytics to determine if the visitor is a robot.
-        If Sitecore XP (with xConnect/xDB) is used, this is required or else analytics will not be collected for the JSS app.
-        For XM (CMS-only) apps, this should be removed.
-
-        VI detection only runs once for a given analytics ID, so this is not a recurring operation once cookies are established.
-      */}
-            <VisitorIdentification />
+            {PushViewEvent({
+                browser_id: 'test',
+                channel: 'WEB',
+                type: 'VIEW',
+                currency: 'AUD',
+                language: 'EN',
+                page: '/',
+                pos: 'Luxury Hotel',
+            })}
 
             {/* root placeholders for the app, which we add components to using route data */}
             <div>
