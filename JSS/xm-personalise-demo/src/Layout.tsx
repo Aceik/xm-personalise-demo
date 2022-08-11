@@ -79,7 +79,6 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
                 {/* End Google Tag Manager */}
 
                 {/* Define Global Boxever/CDP Settings */}
-                {console.log('clientkey', `${process.env.SITECORE_BOXEVER_CLIENTKEY}`)}
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `

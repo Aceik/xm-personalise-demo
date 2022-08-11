@@ -1,11 +1,4 @@
-import {
-    // Text,
-    Field,
-    ImageField,
-    Item,
-    Image,
-    RichText,
-} from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, ImageField, Item, RichText } from '@sitecore-jss/sitecore-jss-nextjs';
 import { ComponentProps } from 'lib/component-props';
 
 type RoomDetailsProps = ComponentProps & {
@@ -30,7 +23,6 @@ type ImageItem = ComponentProps & {
 };
 
 const RoomDetails = ({ fields }: RoomDetailsProps): JSX.Element => {
-    console.log('fields', fields);
     return (
         <section id="room-single-section" className="content-room-single">
             <div className="container">
@@ -39,7 +31,7 @@ const RoomDetails = ({ fields }: RoomDetailsProps): JSX.Element => {
                     <div className="single-room-carousel owl-carousel owl-theme">
                         {fields?.Images &&
                             fields?.Images.map((image: ImageItem) => (
-                                <div className="item-single-room">
+                                <div key={image?.id} className="item-single-room">
                                     <div className="popup-gallery">
                                         <a href="#" title="Relax time">
                                             <img src={image?.url} alt="Room hotel" />
