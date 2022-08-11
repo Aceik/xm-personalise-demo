@@ -124,15 +124,27 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
                 </a>
                 <div>{route && <Placeholder name="jss-footer" rendering={route} />}</div>
 
-                <Script src={`${publicUrl}/js/jquery-2.1.1.js`} />
-                <Script src={`${publicUrl}/bootstrap-3.3.7/js/bootstrap.min.js`} />
-                <Script src={`${publicUrl}/js/owl.carousel.js`} />
-                <Script src={`${publicUrl}/js/owl.carousel.min.js`} />
-                <Script src={`${publicUrl}/js/style.js`} />
-                <Script src={`${publicUrl}/js/validator.min.js`} />
-                <Script src={`${publicUrl}/magnific-popup/jquery.magnific-popup.js`} />
-                <Script src={`${publicUrl}/magnific-popup/jquery.magnific-popup.min.js`} />
-                <Script src={`${publicUrl}/magnific-popup/swiper-magnific-popup.js`} />
+                <Script src={`${publicUrl}/js/jquery-2.1.1.js`} strategy={'beforeInteractive'} />
+                <Script
+                    src={`${publicUrl}/bootstrap-3.3.7/js/bootstrap.min.js`}
+                    strategy={'afterInteractive'}
+                />
+                <Script src={`${publicUrl}/js/owl.carousel.js`} strategy={'afterInteractive'} />
+                <Script src={`${publicUrl}/js/owl.carousel.min.js`} strategy={'afterInteractive'} />
+                <Script src={`${publicUrl}/js/style.js`} strategy={'afterInteractive'} />
+                <Script src={`${publicUrl}/js/validator.min.js`} strategy={'afterInteractive'} />
+                <Script
+                    src={`${publicUrl}/magnific-popup/jquery.magnific-popup.js`}
+                    strategy={'afterInteractive'}
+                />
+                <Script
+                    src={`${publicUrl}/magnific-popup/jquery.magnific-popup.min.js`}
+                    strategy={'afterInteractive'}
+                />
+                <Script
+                    src={`${publicUrl}/magnific-popup/swiper-magnific-popup.js`}
+                    strategy={'afterInteractive'}
+                />
                 {/* <Script src={`${publicUrl}/vegas/vegas.min.js`} /> */}
                 <Script src={`${publicUrl}/js/custom.js`} />
             </div>
