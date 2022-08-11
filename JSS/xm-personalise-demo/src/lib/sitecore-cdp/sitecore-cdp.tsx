@@ -12,9 +12,9 @@ export function GetBrowserId<CreateBrowserRefResponse>() {
 }
 
 export function PushViewEvent(event: ViewEvent) {
-    //get the browser ID seperately and insert into the event object to use for our requests
+    //get the browser ID seperately and insert into the page view event object to use for our requests
     GetBrowserId<CreateBrowserRefResponse>().then((data) => {
-        console.log('browserid response', data);
+        // console.log('browserid response', data);
         event.browser_id = data.ref;
 
         const message = JSON.stringify(event);
@@ -51,4 +51,9 @@ export type ViewEvent = {
     page?: string;
     pos?: string;
     browser_id?: string;
+};
+
+//see: https://doc.sitecore.com/cdp/en/developers/sitecore-customer-data-platform--data-model-2-1/send-an-identity-event-to-sitecore-cdp.html
+export type IdentifyEvent = ViewEvent & {
+    identifiers: Array<string>;
 };
