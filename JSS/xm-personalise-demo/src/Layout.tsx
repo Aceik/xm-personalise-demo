@@ -18,7 +18,7 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
     const router = useRouter();
 
     React.useEffect(() => {
-        window.mootrack('init', '7323a761-09bf-4455-b614-2c011385756c');
+        window.mootrack('init', '5c552518-c998-409b-96bc-9804444ff9c1');
         // track a view of the current page
         window.mootrack('trackPageView');
 
@@ -130,7 +130,7 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
                         !function(t,n,e,o,a){function d(t){var n=~~(Date.now()/3e5),o=document.createElement(e);o.async=!0,o.src=t+"?ts="+n;var a=document.getElementsByTagName(e)[0];a.parentNode.insertBefore(o,a)}t.MooTrackerObject=a,t[a]=t[a]||function(){return t[a].q?void t[a].q.push(arguments):void(t[a].q=[arguments])},window.attachEvent?window.attachEvent("onload",d.bind(this,o)):window.addEventListener("load",d.bind(this,o),!1)}(window,document,"script","//cdn.stat-track.com/statics/moosend-tracking.min.js","mootrack");
                         
                         //tracker has to be initialized otherwise it will generate warnings and wont sendtracking events
-                        mootrack('init', '7323a761-09bf-4455-b614-2c011385756c');`,
+                        // mootrack('init', '5c552518-c998-409b-96bc-9804444ff9c1');`,
                     }}
                 ></script>
             </Head>

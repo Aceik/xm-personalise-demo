@@ -13,13 +13,12 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
     const [data, setData] = useState('');
 
     useEffect(() => {
-        console.log('useEffect');
         setData('<div data-mooform-id="' + fields?.FormID?.value + '"></div>');
-    });
+    }, []);
 
     return (
         <>
-            {!isEditing && fields?.FormID && (
+            {!isEditing && fields?.FormID?.value && (
                 <section id="booking-section" className="content-booking">
                     <div className="container">
                         <div className="form-container col-sm-12">
