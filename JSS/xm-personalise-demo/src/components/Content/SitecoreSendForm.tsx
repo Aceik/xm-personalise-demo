@@ -24,8 +24,7 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
                     <div className="container">
                         <div className="form-container col-sm-12">
                             {/* Sitecore Send Form*/}
-                            {{ data }}
-                            {/* <div data-mooform-id={`${fields?.FormID?.value}`}></div> */}
+                            <div dangerouslySetInnerHTML={{ __html: data }}></div>
                         </div>
                     </div>
                 </section>
