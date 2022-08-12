@@ -20,17 +20,33 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
 
         const formEmailField =
             document.querySelectorAll<HTMLInputElement>('input[name="Email"]')?.[0];
-        console.log(formEmailField.value);
+        console.log(formEmailField?.value);
 
         const formButton = document.querySelectorAll<HTMLButtonElement>(
             '.moosend-designer-button'
         )?.[0];
-        console.log(formButton.value);
+        console.log(formButton?.value);
 
         //https://medium.com/@martin_hotell/react-refs-with-typescript-a32d56c4d315
         // const blah = ReactDOM.findDOMNode(FormWrapper); .get.getElementsByClassName('');
         // 'moosend-designer-button'
     }, []);
+
+    useEffect(() => {
+        const formEmailField =
+            document.querySelectorAll<HTMLInputElement>('input[name="Email"]')?.[0];
+        console.log(formEmailField?.value);
+
+        const formButton = document.querySelectorAll<HTMLButtonElement>(
+            '.moosend-designer-button'
+        )?.[0];
+        console.log(formButton?.value);
+
+        // const test = document.querySelectorAll<HTMLDivElement>('.header-content')?.[0];
+        // console.log('external comp', test);
+
+        //https://medium.com/@martin_hotell/react-refs-with-typescript-a32d56c4d315
+    }, [data]);
 
     return (
         <>
