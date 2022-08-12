@@ -12,7 +12,7 @@ type SitecoreSendFormProps = ComponentWithContextProps & {
 const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
     const isEditing = useSitecoreContext()?.sitecoreContext?.pageEditing;
     const [data, setData] = useState('');
-    const FormWrapper = React.createRef<HTMLDivElement>();
+    // const FormWrapper = React.createRef<HTMLDivElement>();
     // const FormSubmitButton = FormWrapper.findDOMNode<HTMLButtonElement>();
 
     useEffect(() => {
@@ -32,22 +32,6 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
         // 'moosend-designer-button'
     }, []);
 
-    // useEffect(() => {
-    //     const formEmailField =
-    //         document.querySelectorAll<HTMLInputElement>('input[name="Email"]')?.[0];
-    //     console.log(formEmailField?.value);
-
-    //     const formButton = document.querySelectorAll<HTMLButtonElement>(
-    //         '.moosend-designer-button'
-    //     )?.[0];
-    //     console.log(formButton?.value);
-
-    //     // const test = document.querySelectorAll<HTMLDivElement>('.header-content')?.[0];
-    //     // console.log('external comp', test);
-
-    //     //https://medium.com/@martin_hotell/react-refs-with-typescript-a32d56c4d315
-    // }, [data]);
-
     return (
         <>
             {!isEditing && fields?.FormID && (
@@ -55,7 +39,7 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
                     <div className="container">
                         <div className="form-container col-sm-12">
                             {/* Sitecore Send Form*/}
-                            <div ref={FormWrapper} dangerouslySetInnerHTML={{ __html: data }}></div>
+                            <div dangerouslySetInnerHTML={{ __html: data }}></div>
                         </div>
                     </div>
                 </section>
