@@ -1,7 +1,7 @@
 import { ComponentWithContextProps } from 'lib/component-props';
 import { Field, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import React, { useState, useEffect } from 'react';
-import { findDOMNode } from 'react-dom';
+// import { findDOMNode } from 'react-dom';
 
 type SitecoreSendFormProps = ComponentWithContextProps & {
     fields: {
