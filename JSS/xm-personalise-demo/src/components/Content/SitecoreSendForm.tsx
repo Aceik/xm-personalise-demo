@@ -18,7 +18,7 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
 
     return (
         <>
-            {!isEditing && fields?.FormID?.value && (
+            {!isEditing && fields?.FormID && (
                 <section id="booking-section" className="content-booking">
                     <div className="container">
                         <div className="form-container col-sm-12">
