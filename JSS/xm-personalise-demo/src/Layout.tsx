@@ -22,12 +22,14 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
         // track a view of the current page
         window.mootrack('trackPageView');
 
+        const pageValue = router.asPath?.split('?')[0];
+
         PushViewEvent({
             channel: 'WEB',
             type: 'VIEW',
             currency: 'AUD',
             language: 'EN',
-            page: `${router?.asPath}`,
+            page: pageValue,
             pos: 'Luxury Hotel',
         });
     }, []);
