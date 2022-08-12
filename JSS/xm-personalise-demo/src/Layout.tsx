@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { Placeholder, getPublicUrl, LayoutServiceData } from '@sitecore-jss/sitecore-jss-nextjs';
 import Script from 'next/script';
 import { PushViewEvent } from 'lib/sitecore-cdp/sitecore-cdp';
+import { useRouter } from 'next/router';
 
 // Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
@@ -14,6 +15,22 @@ interface LayoutProps {
 
 const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
     const { route } = layoutData.sitecore;
+    const router = useRouter();
+
+    React.useEffect(() => {
+        window.mootrack('init', '7323a761-09bf-4455-b614-2c011385756c');
+        // track a view of the current page
+        window.mootrack('trackPageView');
+
+        PushViewEvent({
+            channel: 'WEB',
+            type: 'VIEW',
+            currency: 'AUD',
+            language: 'EN',
+            page: `${router?.asPath}`,
+            pos: 'Luxury Hotel',
+        });
+    }, []);
 
     return (
         <>
@@ -102,16 +119,19 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
                     async={true}
                     src="https://d1mj578wat5n4o.cloudfront.net/boxever-1.4.9.min.js"
                 ></script>
-            </Head>
 
-            {PushViewEvent({
-                channel: 'WEB',
-                type: 'VIEW',
-                currency: 'AUD',
-                language: 'EN',
-                page: '/',
-                pos: 'Luxury Hotel',
-            })}
+                {/* Sitecore Send */}
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                        //load TrackerJS
+                        !function(t,n,e,o,a){function d(t){var n=~~(Date.now()/3e5),o=document.createElement(e);o.async=!0,o.src=t+"?ts="+n;var a=document.getElementsByTagName(e)[0];a.parentNode.insertBefore(o,a)}t.MooTrackerObject=a,t[a]=t[a]||function(){return t[a].q?void t[a].q.push(arguments):void(t[a].q=[arguments])},window.attachEvent?window.attachEvent("onload",d.bind(this,o)):window.addEventListener("load",d.bind(this,o),!1)}(window,document,"script","//cdn.stat-track.com/statics/moosend-tracking.min.js","mootrack");
+                        
+                        //tracker has to be initialized otherwise it will generate warnings and wont sendtracking events
+                        mootrack('init', '7323a761-09bf-4455-b614-2c011385756c');`,
+                    }}
+                ></script>
+            </Head>
 
             {/* root placeholders for the app, which we add components to using route data */}
             <div>
