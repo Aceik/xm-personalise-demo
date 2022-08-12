@@ -54,7 +54,7 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
                 <link rel="stylesheet" href={`${publicUrl}/css/style.css`} />
                 <link rel="stylesheet" href={`${publicUrl}/css/font-awesome.min.css`} />
                 <link rel="stylesheet" href={`${publicUrl}/magnific-popup/magnific-popup.css`} />
-                {/* <link rel="stylesheet" href={`${publicUrl}/vegas/vegas.min.css`} /> */}
+                <link rel="stylesheet" href={`${publicUrl}/vegas/vegas.min.css`} />
 
                 {/* google fonts */}
                 <link

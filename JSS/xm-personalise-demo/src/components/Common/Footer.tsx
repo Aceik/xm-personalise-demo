@@ -101,7 +101,7 @@ const Footer = ({ fields }: FooterProps): JSX.Element => {
                                     <Link href="/testimonials">Testimonials</Link>
                                 </li>
                                 <li>
-                                    <Link href="/our-restaurant">Dinning</Link>
+                                    <Link href="/our-restaurant">Dining</Link>
                                 </li>
                             </ul>
                         </div>
