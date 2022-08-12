@@ -13,9 +13,8 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
     const [data, setData] = useState('');
 
     useEffect(() => {
-        console.log('useEffect');
         setData('<div data-mooform-id="' + fields?.FormID?.value + '"></div>');
-    });
+    }, []);
 
     return (
         <>
