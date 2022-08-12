@@ -1,5 +1,5 @@
 import { ComponentWithContextProps } from 'lib/component-props';
-import { Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import { Field, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 
 type SitecoreSendFormProps = ComponentWithContextProps & {
     fields: {
@@ -8,20 +8,21 @@ type SitecoreSendFormProps = ComponentWithContextProps & {
 };
 
 const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
+    const isEditing = useSitecoreContext()?.sitecoreContext?.pageEditing;
     return (
-        <section id="booking-section" className="content-booking">
-            <div className="container">
-                <div className="form-container col-sm-12">
-                    {/* Sitecore Send */}
-                    <script
-                        dangerouslySetInnerHTML={{
-                            __html: `
-                            if(!window.mootrack){ !function(t,n,e,o,a){function d(t){var n=~~(Date.now()/3e5),o=document.createElement(e);o.async=!0,o.src=t+"?ts="+n;var a=document.getElementsByTagName(e)[0];a.parentNode.insertBefore(o,a)}t.MooTrackerObject=a,t[a]=t[a]||function(){return t[a].q?void t[a].q.push(arguments):void(t[a].q=[arguments])},window.attachEvent?window.attachEvent("onload",d.bind(this,o)):window.addEventListener("load",d.bind(this,o),!1)}(window,document,"script","https://cdn.stat-track.com/statics/moosend-tracking.min.js","mootrack"); } mootrack('loadForm', '${fields?.FormID?.value}');`,
-                        }}
-                    ></script>
-                </div>
-            </div>
-        </section>
+        <>
+            {!isEditing && fields?.FormID && (
+                <section id="booking-section" className="content-booking">
+                    <div className="container">
+                        <div className="form-container col-sm-12">
+                            <div data-mooform-id="80b155a7-06ed-46df-b0d6-08d42359e2fc"></div>
+                            {/* Sitecore Send Form*/}
+                            <div data-mooform-id={`${fields?.FormID?.value}`}></div>
+                        </div>
+                    </div>
+                </section>
+            )}
+        </>
     );
 };
 
