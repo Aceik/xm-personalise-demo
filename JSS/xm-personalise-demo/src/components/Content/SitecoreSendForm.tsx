@@ -14,7 +14,7 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
 
     useEffect(() => {
         console.log('useEffect');
-        setData('<div data-mooform-id=' + fields?.FormID?.value + '></div>');
+        setData('<div data-mooform-id="' + fields?.FormID?.value + '"></div>');
     });
 
     return (
@@ -24,7 +24,7 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
                     <div className="container">
                         <div className="form-container col-sm-12">
                             {/* Sitecore Send Form*/}
-                            {data}
+                            {{ data }}
                             {/* <div data-mooform-id={`${fields?.FormID?.value}`}></div> */}
                         </div>
                     </div>
