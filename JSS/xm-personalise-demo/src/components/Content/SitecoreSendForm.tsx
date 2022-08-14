@@ -16,7 +16,7 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
     // const FormSubmitButton = FormWrapper.findDOMNode<HTMLButtonElement>();
 
     useEffect(() => {
-        setData('<div ref= data-mooform-id="' + fields?.FormID?.value + '"></div>');
+        setData('<div data-mooform-id="' + fields?.FormID?.value + '"></div>');
 
         const formEmailField =
             document.querySelectorAll<HTMLInputElement>('input[name="Email"]')?.[0];
