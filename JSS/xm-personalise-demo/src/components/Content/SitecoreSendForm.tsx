@@ -63,7 +63,7 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
 
                 formButtonEl.addEventListener('click', handleClick);
             }
-        }, 1000);
+        }, 2000);
     }, [data, formSubmitted]);
 
     return (
@@ -73,7 +73,10 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
                     <div className="container">
                         <div className="form-container col-sm-12">
                             {/* Sitecore Send Form*/}
-                            <div dangerouslySetInnerHTML={{ __html: data }}></div>
+                            <div
+                                className="sendForm"
+                                dangerouslySetInnerHTML={{ __html: data }}
+                            ></div>
                         </div>
                     </div>
                 </section>
