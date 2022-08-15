@@ -78,9 +78,9 @@ export type ViewEvent = {
 
 //see: https://doc.sitecore.com/cdp/en/developers/sitecore-customer-data-platform--data-model-2-1/send-an-identity-event-to-sitecore-cdp.html
 export type IdentifyEvent = ViewEvent & {
-    firstname: string;
-    lastname: string;
-    email: string;
+    firstname?: string;
+    lastname?: string;
+    email?: string;
     identifiers: {
         provider: string;
         id: string;
