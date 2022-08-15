@@ -26,7 +26,7 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
     //useEffect to attach additional events to the Sitecore send form Submit event to call Sitecore CDP Identify event as well
     useEffect(() => {
         setTimeout(() => {
-            console.log('This will run after 1 second!');
+            console.log('Delay by 1 second to allow send form to be loaded first');
 
             const formEmailField = document.querySelectorAll('input[name="Email"]')?.[0];
             const formButton = document.querySelectorAll('.moosend-designer-button')?.[0];
@@ -37,25 +37,23 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
             const formEmailFieldEl = formEmailField as HTMLInputElement;
 
             if (formButtonEl) {
-                console.log('in button el wrapper');
                 const handleClick = (event: MouseEvent) => {
                     console.log('button event happened', event);
-                    console.log('emailValue', formEmailFieldEl?.value);
                     PushIdentifyEvent({
                         channel: 'WEB',
-                        type: 'VIEW',
+                        type: 'IDENTITY',
                         currency: 'AUD',
                         language: 'EN',
                         page: pageValue,
                         pos: 'Luxury Hotel',
-                        email: formEmailFieldEl?.value,
+                        // email: formEmailFieldEl?.value,
                         identifiers: {
                             provider: 'email',
                             id: formEmailFieldEl?.value,
                         },
                     });
                 };
-
+                formButtonEl.removeEventListener('click', handleClick);
                 formButtonEl.addEventListener('click', handleClick);
             }
         }, 1000);

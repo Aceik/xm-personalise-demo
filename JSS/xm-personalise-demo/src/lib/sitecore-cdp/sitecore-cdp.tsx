@@ -43,6 +43,8 @@ export function PushIdentifyEvent(event: IdentifyEvent) {
         const message = JSON.stringify(event);
         const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
 
+        console.log('event data: ', event);
+
         const boxeverAPIEndpoint = `https://api-ap-southeast-2-production.boxever.com/v1.2/event/create.json?client_key=${clientKey}&message=${message}`;
 
         axios
