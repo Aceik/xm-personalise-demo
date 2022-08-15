@@ -49,6 +49,7 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
                         language: 'EN',
                         page: pageValue,
                         pos: 'Luxury Hotel',
+                        // browser_id: window.Boxever.getID(),
                         email: formEmailFieldEl?.value,
                         firstname: formFirstNameFieldEl?.value,
                         lastname: formLastNameFieldEl?.value,

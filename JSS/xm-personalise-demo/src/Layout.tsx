@@ -31,6 +31,7 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
             language: 'EN',
             page: pageValue,
             pos: 'Luxury Hotel',
+            // browser_id: window.Boxever.getID(),
         });
     }, []);
 
