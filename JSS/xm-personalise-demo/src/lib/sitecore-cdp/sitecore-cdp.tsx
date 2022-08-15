@@ -1,63 +1,85 @@
 import axios from 'axios';
 
+// export function GetBrowserId<CreateBrowserRefResponse>() {
+//     // if(window?.Boxever && window?.Boxever?.getID()) {
+//     //     const promise = axios.get<CreateBrowserRefResponse>(boxeverAPIEndpoint);
+
+//     //     const dataPromise = promise.then((response) => response.data);
+
+//     //     const promise = window?.Boxever?.getID();
+//     //     return promise.data;
+//     // }
+
+//     const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
+//     const boxeverAPIEndpoint = `https://api-ap-southeast-2-production.boxever.com/v1.2/browser/create.json?client_key=${clientKey}&message={}`;
+
+//     const promise = axios.get<CreateBrowserRefResponse>(boxeverAPIEndpoint);
+
+//     const dataPromise = promise.then((response) => response.data);
+
+//     return dataPromise;
+// }
+
 export function GetBrowserId<CreateBrowserRefResponse>() {
+    if (window?.Boxever && window?.Boxever?.getID()) {
+        return window.Boxever.getID();
+    }
+
     const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
     const boxeverAPIEndpoint = `https://api-ap-southeast-2-production.boxever.com/v1.2/browser/create.json?client_key=${clientKey}&message={}`;
 
-    const promise = axios.get<CreateBrowserRefResponse>(boxeverAPIEndpoint);
-
-    const dataPromise = promise.then((response) => response.data);
-
-    return dataPromise;
+    const response = axios.get<CreateBrowserRefResponse>(boxeverAPIEndpoint);
+    return window.Boxever.getID();
 }
 
 export function PushViewEvent(event: ViewEvent) {
     //get the browser ID seperately and insert into the page view event object to use for our requests
-    GetBrowserId<CreateBrowserRefResponse>().then((data) => {
-        event.browser_id = data.ref;
-        console.log('CDP browserId: ', event.browser_id);
+    const browserID = GetBrowserId<CreateBrowserRefResponse>();
 
-        const message = JSON.stringify(event);
-        const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
+    event.browser_id = browserID;
+    console.log('CDP browserId: ', browserID);
 
-        const boxeverAPIEndpoint = `https://api-ap-southeast-2-production.boxever.com/v1.2/event/create.json?client_key=${clientKey}&message=${message}`;
+    const message = JSON.stringify(event);
+    const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
 
-        axios
-            .get(boxeverAPIEndpoint)
-            .then(function (response) {
-                // handle success
-                console.log('boxever view event response was: ', response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
-    });
+    const boxeverAPIEndpoint = `https://api-ap-southeast-2-production.boxever.com/v1.2/event/create.json?client_key=${clientKey}&message=${message}`;
+
+    axios
+        .get(boxeverAPIEndpoint)
+        .then(function (response) {
+            // handle success
+            console.log('boxever view event response was: ', response);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
 }
 
 export function PushIdentifyEvent(event: IdentifyEvent) {
     //get the browser ID seperately and insert into the page view event object to use for our requests
-    GetBrowserId<CreateBrowserRefResponse>().then((data) => {
-        event.browser_id = data.ref;
+    const browserID = GetBrowserId<CreateBrowserRefResponse>();
 
-        const message = JSON.stringify(event);
-        const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
+    event.browser_id = browserID;
+    console.log('CDP browserId: ', browserID);
 
-        console.log('event data: ', event);
+    const message = JSON.stringify(event);
+    const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
 
-        const boxeverAPIEndpoint = `https://api-ap-southeast-2-production.boxever.com/v1.2/event/create.json?client_key=${clientKey}&message=${message}`;
+    console.log('event data: ', event);
 
-        axios
-            .get(boxeverAPIEndpoint)
-            .then(function (response) {
-                // handle success
-                console.log('boxever identify event response was: ', response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
-    });
+    const boxeverAPIEndpoint = `https://api-ap-southeast-2-production.boxever.com/v1.2/event/create.json?client_key=${clientKey}&message=${message}`;
+
+    axios
+        .get(boxeverAPIEndpoint)
+        .then(function (response) {
+            // handle success
+            console.log('boxever identify event response was: ', response);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        });
 }
 
 export type CreateBrowserRefResponse = {
