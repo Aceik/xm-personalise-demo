@@ -83,8 +83,10 @@ export type IdentifyEvent = ViewEvent & {
     firstname?: string;
     lastname?: string;
     email?: string;
-    identifiers: {
-        provider: string;
-        id: string;
-    };
+    identifiers: [
+        {
+            provider: string;
+            id: string;
+        }
+    ];
 };

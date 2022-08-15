@@ -46,11 +46,13 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
                         language: 'EN',
                         page: pageValue,
                         pos: 'Luxury Hotel',
-                        // email: formEmailFieldEl?.value,
-                        identifiers: {
-                            provider: 'email',
-                            id: formEmailFieldEl?.value,
-                        },
+                        email: formEmailFieldEl?.value,
+                        identifiers: [
+                            {
+                                provider: 'email',
+                                id: formEmailFieldEl?.value,
+                            },
+                        ],
                     });
                 };
                 formButtonEl.removeEventListener('click', handleClick);
