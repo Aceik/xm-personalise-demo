@@ -29,27 +29,46 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
             console.log('This will run after 1 second!');
 
             const formEmailField = document.querySelectorAll('input[name="Email"]')?.[0];
-            // console.log('email field', formEmailField);
+            const formButton = document.querySelectorAll('.moosend-designer-button')?.[0];
+            // const form = document.querySelectorAll('form')?.[0];
 
-            // const formButton = document.querySelectorAll('.moosend-designer-button')?.[0];
-            // console.log('form button', formButton);
-
-            const form = document.querySelectorAll('form')?.[0];
-
-            const formEl = form as HTMLFormElement;
-            // const formButtonEl = formButton as HTMLButtonElement;
+            // const formEl = form as HTMLFormElement;
+            const formButtonEl = formButton as HTMLButtonElement;
             const formEmailFieldEl = formEmailField as HTMLInputElement;
 
-            const emailValue = formEmailFieldEl?.value;
+            // const emailValue = formEmailFieldEl?.value;
 
             // console.log('formbuttonel: ', formButtonEl);
-            // console.log('forminputel: ', formEmailFieldEl);
-            console.log('formel: ', formEl);
-            if (formEl) {
-                console.log('in form el wrapper');
-                const handleSubmit = (event: SubmitEvent) => {
-                    console.log('Submit event happened', event);
+            // // console.log('forminputel: ', formEmailFieldEl);
+            // console.log('formel: ', formEl);
+            // if (formEl) {
+            //     console.log('in form el wrapper');
+            //     const handleSubmit = (event: SubmitEvent) => {
+            //         console.log('Submit event happened', event);
+            //         PushIdentifyEvent({
+            //             channel: 'WEB',
+            //             type: 'VIEW',
+            //             currency: 'AUD',
+            //             language: 'EN',
+            //             page: pageValue,
+            //             pos: 'Luxury Hotel',
+            //             email: emailValue,
+            //             identifiers: {
+            //                 id: emailValue,
+            //                 provider: 'website',
+            //             },
+            //         });
+            //     };
 
+            //     formEl.addEventListener('submit', handleSubmit);
+            //     console.log('formEl2', formEl);
+            // }
+
+            if (formButtonEl) {
+                console.log('in button el wrapper');
+                const handleClick = (event: MouseEvent) => {
+                    console.log('button event happened', event);
+                    console.log('emailValue', formEmailFieldEl?.value);
                     PushIdentifyEvent({
                         channel: 'WEB',
                         type: 'VIEW',
@@ -57,16 +76,16 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
                         language: 'EN',
                         page: pageValue,
                         pos: 'Luxury Hotel',
-                        email: emailValue,
+                        email: formEmailFieldEl?.value,
                         identifiers: {
-                            id: emailValue,
+                            id: formEmailFieldEl?.value,
                             provider: 'website',
                         },
                     });
                 };
 
-                formEl.addEventListener('submit', handleSubmit);
-                console.log('formEl2', formEl);
+                formButtonEl.addEventListener('click', handleClick);
+                // console.log('formEl2', formEl);
             }
         }, 1000);
         // const handleClick = React.FormEvent<HTMLFormElement> => {
