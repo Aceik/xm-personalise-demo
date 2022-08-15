@@ -24,7 +24,7 @@ const Header = ({ rendering, fields }: HeaderProps): JSX.Element => {
             <div
                 id="header-background"
                 style={{
-                    backgroundImage: `url('${fields?.BackgroundImage?.value?.src})`,
+                    backgroundImage: `url('${fields?.BackgroundImage?.value?.src}')`,
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: 'center top / cover',
                 }}
