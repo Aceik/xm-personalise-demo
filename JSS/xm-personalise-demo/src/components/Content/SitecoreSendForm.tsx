@@ -13,6 +13,7 @@ type SitecoreSendFormProps = ComponentWithContextProps & {
 const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
     const isEditing = useSitecoreContext()?.sitecoreContext?.pageEditing;
     const [data, setData] = useState('');
+    const [formSubmitted, setFormSubmitted] = useState(false);
     const router = useRouter();
     const pageValue = router.asPath?.split('?')[0];
 
@@ -28,13 +29,17 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
 
             const formEmailField = document.querySelectorAll('input[name="Email"]')?.[0];
             const formButton = document.querySelectorAll('.moosend-designer-button')?.[0];
-            // const form = document.querySelectorAll('form')?.[0];
+            const formFirstNameField = document.querySelectorAll('input[name="First Name"]')?.[0];
+            const formLastNameField = document.querySelectorAll('input[name="Surname"]')?.[0];
 
-            // const formEl = form as HTMLFormElement;
             const formButtonEl = formButton as HTMLButtonElement;
             const formEmailFieldEl = formEmailField as HTMLInputElement;
+            const formFirstNameFieldEl = formFirstNameField as HTMLInputElement;
+            const formLastNameFieldEl = formLastNameField as HTMLInputElement;
 
-            if (formButtonEl) {
+            if (formButtonEl && !formSubmitted) {
+                setFormSubmitted(true);
+
                 const handleClick = (event: MouseEvent) => {
                     console.log('button event happened', event);
                     PushIdentifyEvent({
@@ -45,6 +50,8 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
                         page: pageValue,
                         pos: 'Luxury Hotel',
                         email: formEmailFieldEl?.value,
+                        firstname: formFirstNameFieldEl?.value,
+                        lastname: formLastNameFieldEl?.value,
                         identifiers: [
                             {
                                 provider: 'email',
@@ -53,11 +60,11 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
                         ],
                     });
                 };
-                formButtonEl.removeEventListener('click', handleClick);
+
                 formButtonEl.addEventListener('click', handleClick);
             }
         }, 1000);
-    }, [data]);
+    }, [data, formSubmitted]);
 
     return (
         <>
