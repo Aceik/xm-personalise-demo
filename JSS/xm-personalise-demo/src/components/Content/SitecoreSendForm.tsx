@@ -1,7 +1,8 @@
 import { ComponentWithContextProps } from 'lib/component-props';
 import { Field, useSitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 import React, { useState, useEffect } from 'react';
-// import { findDOMNode } from 'react-dom';
+import { PushIdentifyEvent } from 'lib/sitecore-cdp/sitecore-cdp';
+import { useRouter } from 'next/router';
 
 type SitecoreSendFormProps = ComponentWithContextProps & {
     fields: {
@@ -12,25 +13,53 @@ type SitecoreSendFormProps = ComponentWithContextProps & {
 const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
     const isEditing = useSitecoreContext()?.sitecoreContext?.pageEditing;
     const [data, setData] = useState('');
+    const router = useRouter();
+    const pageValue = router.asPath?.split('?')[0];
     // const FormWrapper = React.createRef<HTMLDivElement>();
     // const FormSubmitButton = FormWrapper.findDOMNode<HTMLButtonElement>();
 
+    //useEffect to insert the sitecore send form into the page after the scripts it needs are loaded.
     useEffect(() => {
         setData('<div data-mooform-id="' + fields?.FormID?.value + '"></div>');
-
-        const formEmailField =
-            document.querySelectorAll<HTMLInputElement>('input[name="Email"]')?.[0];
-        console.log(formEmailField?.value);
-
-        const formButton = document.querySelectorAll<HTMLButtonElement>(
-            '.moosend-designer-button'
-        )?.[0];
-        console.log(formButton?.value);
-
-        //https://medium.com/@martin_hotell/react-refs-with-typescript-a32d56c4d315
-        // const blah = ReactDOM.findDOMNode(FormWrapper); .get.getElementsByClassName('');
-        // 'moosend-designer-button'
     }, []);
+
+    //useEffect to attach additional events to the Sitecore send form Submit event to call Sitecore CDP Identify event as well
+    useEffect(() => {
+        setTimeout(() => {
+            console.log('This will run after 1 second!');
+
+            const formEmailField = document.querySelectorAll('input[name="Email"]')?.[0];
+            const formButton = document.querySelectorAll('.moosend-designer-button')?.[0];
+            // const form = document.querySelectorAll('form')?.[0];
+
+            // const formEl = form as HTMLFormElement;
+            const formButtonEl = formButton as HTMLButtonElement;
+            const formEmailFieldEl = formEmailField as HTMLInputElement;
+
+            if (formButtonEl) {
+                console.log('in button el wrapper');
+                const handleClick = (event: MouseEvent) => {
+                    console.log('button event happened', event);
+                    console.log('emailValue', formEmailFieldEl?.value);
+                    PushIdentifyEvent({
+                        channel: 'WEB',
+                        type: 'VIEW',
+                        currency: 'AUD',
+                        language: 'EN',
+                        page: pageValue,
+                        pos: 'Luxury Hotel',
+                        email: formEmailFieldEl?.value,
+                        identifiers: {
+                            provider: 'email',
+                            id: formEmailFieldEl?.value,
+                        },
+                    });
+                };
+
+                formButtonEl.addEventListener('click', handleClick);
+            }
+        }, 1000);
+    }, [data]);
 
     return (
         <>
