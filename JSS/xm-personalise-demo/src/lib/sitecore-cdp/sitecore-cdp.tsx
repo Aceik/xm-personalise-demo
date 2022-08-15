@@ -1,25 +1,5 @@
 import axios from 'axios';
 
-// export function GetBrowserId<CreateBrowserRefResponse>() {
-//     // if(window?.Boxever && window?.Boxever?.getID()) {
-//     //     const promise = axios.get<CreateBrowserRefResponse>(boxeverAPIEndpoint);
-
-//     //     const dataPromise = promise.then((response) => response.data);
-
-//     //     const promise = window?.Boxever?.getID();
-//     //     return promise.data;
-//     // }
-
-//     const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
-//     const boxeverAPIEndpoint = `https://api-ap-southeast-2-production.boxever.com/v1.2/browser/create.json?client_key=${clientKey}&message={}`;
-
-//     const promise = axios.get<CreateBrowserRefResponse>(boxeverAPIEndpoint);
-
-//     const dataPromise = promise.then((response) => response.data);
-
-//     return dataPromise;
-// }
-
 export function GetBrowserId<CreateBrowserRefResponse>() {
     if (window?.Boxever && window?.Boxever?.getID()) {
         return window.Boxever.getID();
