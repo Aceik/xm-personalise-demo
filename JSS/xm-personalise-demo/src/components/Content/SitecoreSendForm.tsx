@@ -36,34 +36,6 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
             const formButtonEl = formButton as HTMLButtonElement;
             const formEmailFieldEl = formEmailField as HTMLInputElement;
 
-            // const emailValue = formEmailFieldEl?.value;
-
-            // console.log('formbuttonel: ', formButtonEl);
-            // // console.log('forminputel: ', formEmailFieldEl);
-            // console.log('formel: ', formEl);
-            // if (formEl) {
-            //     console.log('in form el wrapper');
-            //     const handleSubmit = (event: SubmitEvent) => {
-            //         console.log('Submit event happened', event);
-            //         PushIdentifyEvent({
-            //             channel: 'WEB',
-            //             type: 'VIEW',
-            //             currency: 'AUD',
-            //             language: 'EN',
-            //             page: pageValue,
-            //             pos: 'Luxury Hotel',
-            //             email: emailValue,
-            //             identifiers: {
-            //                 id: emailValue,
-            //                 provider: 'website',
-            //             },
-            //         });
-            //     };
-
-            //     formEl.addEventListener('submit', handleSubmit);
-            //     console.log('formEl2', formEl);
-            // }
-
             if (formButtonEl) {
                 console.log('in button el wrapper');
                 const handleClick = (event: MouseEvent) => {
@@ -78,28 +50,16 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
                         pos: 'Luxury Hotel',
                         email: formEmailFieldEl?.value,
                         identifiers: {
+                            provider: 'email',
                             id: formEmailFieldEl?.value,
-                            provider: 'website',
                         },
                     });
                 };
 
                 formButtonEl.addEventListener('click', handleClick);
-                // console.log('formEl2', formEl);
             }
         }, 1000);
-        // const handleClick = React.FormEvent<HTMLFormElement> => {
-        //     console.log('Button clicked');
-        //   };
     }, [data]);
-
-    // const handleSubmit = React.FormEvent<HTMLFormElement> => {
-    //     console.log('in the submit event');
-    // };
-
-    // const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
-    //     console.log('in the submit event');
-    // };
 
     return (
         <>

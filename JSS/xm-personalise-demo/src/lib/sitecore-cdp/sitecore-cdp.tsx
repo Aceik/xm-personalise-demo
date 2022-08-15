@@ -14,8 +14,8 @@ export function GetBrowserId<CreateBrowserRefResponse>() {
 export function PushViewEvent(event: ViewEvent) {
     //get the browser ID seperately and insert into the page view event object to use for our requests
     GetBrowserId<CreateBrowserRefResponse>().then((data) => {
-        // console.log('browserid response', data);
         event.browser_id = data.ref;
+        console.log('CDP browserId: ', event.browser_id);
 
         const message = JSON.stringify(event);
         const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
