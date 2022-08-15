@@ -15,8 +15,6 @@ const SitecoreSendForm = ({ fields }: SitecoreSendFormProps): JSX.Element => {
     const [data, setData] = useState('');
     const router = useRouter();
     const pageValue = router.asPath?.split('?')[0];
-    // const FormWrapper = React.createRef<HTMLDivElement>();
-    // const FormSubmitButton = FormWrapper.findDOMNode<HTMLButtonElement>();
 
     //useEffect to insert the sitecore send form into the page after the scripts it needs are loaded.
     useEffect(() => {
