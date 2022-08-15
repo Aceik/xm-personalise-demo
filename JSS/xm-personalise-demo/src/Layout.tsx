@@ -109,7 +109,7 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
                                 cookie_domain: "${process.env.SITECORE_BOXEVER_COOKIE_DOMAIN}",
                                 javascriptLibraryVersion: '1.4.9',
                                 pointOfSale: "Luxury Hotel",
-                                //web_flow_target: "https://d35vb5cccm4xzp.cloudfront.net"
+                                web_flow_target: "https://d35vb5cccm4xzp.cloudfront.net"
                             }                                              
                         })();`,
                     }}
