@@ -28,7 +28,7 @@ export function GetBrowserId<CreateBrowserRefResponse>() {
     const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
     const boxeverAPIEndpoint = `https://api-ap-southeast-2-production.boxever.com/v1.2/browser/create.json?client_key=${clientKey}&message={}`;
 
-    const response = axios.get<CreateBrowserRefResponse>(boxeverAPIEndpoint);
+    axios.get<CreateBrowserRefResponse>(boxeverAPIEndpoint);
     return window.Boxever.getID();
 }
 
