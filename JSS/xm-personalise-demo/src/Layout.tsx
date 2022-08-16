@@ -16,7 +16,7 @@ interface LayoutProps {
 const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
     const { route } = layoutData.sitecore;
     const router = useRouter();
-    let { utm_campaign, utm_medium, utm_source } = useRouter().query;
+    const { utm_campaign, utm_medium, utm_source } = useRouter().query;
 
     React.useEffect(() => {
         window.mootrack('init', '5c552518-c998-409b-96bc-9804444ff9c1');
