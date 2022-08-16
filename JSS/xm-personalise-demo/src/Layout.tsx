@@ -16,6 +16,7 @@ interface LayoutProps {
 const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
     const { route } = layoutData.sitecore;
     const router = useRouter();
+    let { utm_campaign, utm_medium, utm_source } = useRouter().query;
 
     React.useEffect(() => {
         window.mootrack('init', '5c552518-c998-409b-96bc-9804444ff9c1');
@@ -31,6 +32,9 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
             language: 'EN',
             page: pageValue,
             pos: 'Luxury Hotel',
+            utm_campaign: utm_campaign ?? null,
+            utm_medium: utm_medium ?? null,
+            utm_source: utm_source ?? null,
             // browser_id: window.Boxever.getID(),
         });
     }, []);
