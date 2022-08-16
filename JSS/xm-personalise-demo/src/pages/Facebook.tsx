@@ -20,7 +20,7 @@ const FacebookPage: NextPage = () => (
             <div className="row">
                 <div className="col-sm-12">
                     <a
-                        href={`${publicUrl}?utm_source=facebook&utm_medium=social&utm_campaign=island_competition`}
+                        href={`https://www.sugcon-headless-demo.xyz?utm_source=facebook&utm_medium=social&utm_campaign=island_competition`}
                     >
                         <img
                             src={`${publicUrl}/AllyDavid_DemoFacebook.jpg`}
