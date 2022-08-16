@@ -78,6 +78,12 @@ export type ViewEvent = {
     page?: string;
     pos?: string;
     browser_id?: string;
+    utm_source?: string | string[] | null;
+    utm_medium?: string | string[] | null;
+    utm_campaign?: string | string[] | null;
+    // session_data?: [{
+    //     campaign: string,
+    // } ]
 };
 
 //see: https://doc.sitecore.com/cdp/en/developers/sitecore-customer-data-platform--data-model-2-1/send-an-identity-event-to-sitecore-cdp.html

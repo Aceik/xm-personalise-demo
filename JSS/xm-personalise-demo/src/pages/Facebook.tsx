@@ -19,7 +19,9 @@ const FacebookPage: NextPage = () => (
         <div className="container">
             <div className="row">
                 <div className="col-sm-12">
-                    <a href={`${publicUrl}/?campaign="IslandCompetition"`}>
+                    <a
+                        href={`${publicUrl}?utm_source=facebook&utm_medium=social&utm_campaign=island_competition`}
+                    >
                         <img
                             src={`${publicUrl}/AllyDavid_DemoFacebook.jpg`}
                             className="mx-auto d-block"
