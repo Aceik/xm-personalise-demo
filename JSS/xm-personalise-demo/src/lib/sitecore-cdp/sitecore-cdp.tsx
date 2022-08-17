@@ -20,6 +20,7 @@ export function PushViewEvent(event: ViewEvent) {
     console.log('CDP browserId: ', browserID);
 
     const message = JSON.stringify(event);
+    console.log('campaign id (if present)', event.utm_campaign);
     const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
 
     const boxeverAPIEndpoint = `https://api-ap-southeast-2-production.boxever.com/v1.2/event/create.json?client_key=${clientKey}&message=${message}`;
