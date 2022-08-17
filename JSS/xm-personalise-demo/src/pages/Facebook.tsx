@@ -16,15 +16,17 @@ const FacebookPage: NextPage = () => (
 
             <link rel="stylesheet" href={`${publicUrl}/bootstrap-3.3.7/css/bootstrap.min.css`} />
         </Head>
-        <div className="container">
+
+        <div className="container" style={{ margin: '0 auto', background: '#eee', width: '100%' }}>
             <div className="row">
-                <div className="col-sm-12">
+                <div className="col-sm-12" style={{ textAlign: 'center' }}>
                     <a
                         href={`https://www.sugcon-headless-demo.xyz?utm_source=facebook&utm_medium=social&utm_campaign=island_competition`}
                     >
                         <img
                             src={`${publicUrl}/AllyDavid_DemoFacebook.jpg`}
                             className="mx-auto d-block"
+                            style={{ width: '1024px' }}
                         ></img>
                     </a>
                 </div>
