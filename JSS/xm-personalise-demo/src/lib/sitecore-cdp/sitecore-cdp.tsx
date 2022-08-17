@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function GetBrowserId<CreateBrowserRefResponse>() {
     if (window?.Boxever && window?.Boxever?.getID()) {
-        return window.Boxever.getID();
+        return window?.Boxever?.getID();
     }
 
     const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
