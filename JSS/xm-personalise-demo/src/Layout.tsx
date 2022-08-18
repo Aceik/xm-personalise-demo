@@ -35,7 +35,6 @@ const Layout = ({ layoutData }: LayoutProps): JSX.Element => {
             utm_campaign: utm_campaign ?? null,
             utm_medium: utm_medium ?? null,
             utm_source: utm_source ?? null,
-            // browser_id: window.Boxever.getID(),
         });
     }, []);
 

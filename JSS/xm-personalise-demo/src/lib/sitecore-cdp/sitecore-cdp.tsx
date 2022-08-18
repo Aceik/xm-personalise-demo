@@ -4,12 +4,19 @@ export function GetBrowserId<CreateBrowserRefResponse>() {
     if (window?.Boxever && window?.Boxever?.getID()) {
         return window?.Boxever?.getID();
     }
-
+    let broswerId;
     const clientKey = process.env.SITECORE_BOXEVER_CLIENTKEY;
     const boxeverAPIEndpoint = `https://api-ap-southeast-2-production.boxever.com/v1.2/browser/create.json?client_key=${clientKey}&message={}`;
 
-    axios.get<CreateBrowserRefResponse>(boxeverAPIEndpoint);
-    return window.Boxever.getID();
+    const promise = axios.get<CreateBrowserRefResponse>(boxeverAPIEndpoint);
+    const response = promise
+        .then((res) => (broswerId = res.data))
+        .then((data) => {
+            broswerId = data.ref;
+        });
+
+    console.log('bid response: ', response);
+    return broswerId;
 }
 
 export function PushViewEvent(event: ViewEvent) {
@@ -82,9 +89,6 @@ export type ViewEvent = {
     utm_source?: string | string[] | null;
     utm_medium?: string | string[] | null;
     utm_campaign?: string | string[] | null;
-    // session_data?: [{
-    //     campaign: string,
-    // } ]
 };
 
 //see: https://doc.sitecore.com/cdp/en/developers/sitecore-customer-data-platform--data-model-2-1/send-an-identity-event-to-sitecore-cdp.html
