@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export function GetBrowserId<CreateBrowserRefResponse>() {
+export function GetBrowserId() {
     if (window?.Boxever && window?.Boxever?.getID()) {
         return window?.Boxever?.getID();
     }
@@ -21,7 +21,7 @@ export function GetBrowserId<CreateBrowserRefResponse>() {
 
 export function PushViewEvent(event: ViewEvent) {
     //get the browser ID seperately and insert into the page view event object to use for our requests
-    const browserID = GetBrowserId<CreateBrowserRefResponse>();
+    const browserID = GetBrowserId();
 
     event.browser_id = browserID;
     console.log('CDP browserId: ', browserID);
@@ -46,7 +46,7 @@ export function PushViewEvent(event: ViewEvent) {
 
 export function PushIdentifyEvent(event: IdentifyEvent) {
     //get the browser ID seperately and insert into the page view event object to use for our requests
-    const browserID = GetBrowserId<CreateBrowserRefResponse>();
+    const browserID = GetBrowserId();
 
     event.browser_id = browserID;
     console.log('CDP browserId: ', browserID);
